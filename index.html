@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2N316gzPWvSV7_59Mjx49idXLH8Sc7S_S0nHhvGjYxhhGjTm8UBnsRB4VGgeuluL0/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_PHY_0016 = [
+    {
+        question: "Q1: In the study of mechanics, which sub-division focuses exclusively on describing motion without considering the influences that cause it?",
+        options: [
+            "Dynamics",
+            "Statics",
+            "Kinematics",
+            "Thermodynamics"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Kinematics explains motion without reference to the forces causing it, distinguishing it from Dynamics which studies motion under the action of forces."
+    },
+    {
+        question: "Q2: An object is observed by two different individuals. One states the object is at rest, while the other claims it is in motion. What fundamental concept of mechanics does this scenario illustrate?",
+        options: [
+            "The principle of inertia",
+            "The relativity of rest and motion",
+            "The absolute nature of velocity",
+            "The effect of external forces"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that rest and motion are relative concepts, dependent on the observer or frame of reference, meaning an object's state is not absolute."
+    },
+    {
+        question: "Q3: Consider a scenario where an object travels along a curved path and then returns to its starting point. Which statement accurately describes its displacement and the distance covered?",
+        options: [
+            "Both its displacement and distance covered are zero.",
+            "Its displacement is zero, but the distance covered is not zero.",
+            "Its displacement is not zero, but the distance covered is zero.",
+            "Both its displacement and distance covered are non-zero."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that displacement is the shortest directed distance between two positions. If an object returns to its starting point, its initial and final positions are the same, so displacement is zero. Distance covered, however, is a scalar quantity representing the total path length, which would not be zero for a path travelled."
+    },
+    {
+        question: "Q4: A vehicle moves with a constant positive velocity. What would its velocity-time graph look like?",
+        options: [
+            "A curved line with increasing slope.",
+            "A straight line with a positive constant slope.",
+            "A horizontal line above the time axis.",
+            "A straight line passing through the origin."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that for a velocity-time graph, a horizontal line indicates zero acceleration, which corresponds to constant velocity. If the velocity is positive, the line would be above the time axis."
+    },
+    {
+        question: "Q5: An object's velocity is observed to be uniform. What is the relationship between its average and instantaneous velocities?",
+        options: [
+            "Average velocity is always greater than instantaneous velocity.",
+            "Instantaneous velocity is always greater than average velocity.",
+            "They are always equal.",
+            "They are inversely proportional."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that for uniform velocity, a body covers equal displacements in equal intervals of time, and in this specific case, its average and instantaneous velocities are equal."
+    },
+    {
+        question: "Q6: Which physical quantity is exclusively scalar and cannot be negative under any circumstances during motion?",
+        options: [
+            "Displacement",
+            "Velocity",
+            "Acceleration",
+            "Speed"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that speed is a scalar quantity and cannot be negative because distance always increases or stays the same. Displacement, velocity, and acceleration are vectors and can be negative, indicating direction."
+    },
+    {
+        question: "Q7: An object's displacement-time graph shows a straight line with a constant negative slope. What does this indicate about the object's motion?",
+        options: [
+            "It is at rest.",
+            "It has uniform positive velocity.",
+            "It has decreasing linear velocity.",
+            "It has variable velocity."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that the slope of a displacement-time graph represents velocity. A straight line indicates constant velocity, and a negative slope specifically indicates decreasing linear velocity (or uniform velocity in the negative direction)."
+    },
+    {
+        question: "Q8: According to Newton's First Law, what property of an object resists acceleration?",
+        options: [
+            "Its velocity",
+            "Its momentum",
+            "Its inertia",
+            "Its force"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that inertia is the property of an object that resists acceleration, described as its natural tendency to maintain its state of motion."
+    },
+    {
+        question: "Q9: A body undergoes deceleration. How are its velocity and acceleration vectors oriented relative to each other?",
+        options: [
+            "They point in the same direction.",
+            "They are perpendicular to each other.",
+            "They point in opposite directions.",
+            "Their relative orientation is unpredictable."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that deceleration (or retardation) occurs when an object is slowing down, which means its velocity and acceleration point in opposite directions."
+    },
+    {
+        question: "Q10: Which of the following statements about Newton's Third Law is correct?",
+        options: [
+            "Action and reaction forces always cancel each other out because they are equal and opposite.",
+            "Action and reaction forces act on the same object.",
+            "Forces always occur in pairs and act on different objects.",
+            "The action force is always greater than the reaction force."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that when one object exerts a force on a second object, the second object exerts an equal in magnitude and opposite in direction force on the first object. Crucially, it clarifies that forces always occur in pairs and act on *different* objects, which is why they do not cancel each other out on a single object."
+    },
+    {
+        question: "Q11: An object is undergoing motion solely due to gravity near Earth's surface, neglecting air resistance. Which statement accurately describes its horizontal and vertical accelerations?",
+        options: [
+            "Both horizontal and vertical accelerations are constant and non-zero.",
+            "Horizontal acceleration is zero, and vertical acceleration is constant and non-zero.",
+            "Vertical acceleration is zero, and horizontal acceleration is constant and non-zero.",
+            "Both horizontal and vertical accelerations are zero."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that for ideal projectile motion, horizontal acceleration is 0 m/s² (constant horizontal velocity), and vertical acceleration is -g (approximately -9.8 m/s² downward), which is constant and non-zero."
+    },
+    {
+        question: "Q12: In a one-dimensional perfectly elastic collision between two objects, what can be stated about their relative speeds before and after the interaction?",
+        options: [
+            "The relative speed of approach is greater than the relative speed of recession.",
+            "The relative speed of approach is less than the relative speed of recession.",
+            "The relative speed of approach is equal to the relative speed of recession.",
+            "Their relative speeds are always zero after the collision."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that for a perfectly elastic collision in one dimension, a key result is that the relative speed of approach is equal to the relative speed of recession."
+    },
+    {
+        question: "Q13: What is the primary characteristic of an inelastic collision that distinguishes it from an elastic collision?",
+        options: [
+            "Linear momentum is not conserved.",
+            "Total energy is not conserved.",
+            "Kinetic energy is not conserved.",
+            "Objects always stick together."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that in an inelastic collision, linear momentum is conserved, but kinetic energy is NOT conserved, as some kinetic energy is transformed into other forms. In contrast, both kinetic energy and linear momentum are conserved in an elastic collision."
+    },
+    {
+        question: "Q14: An object is launched at an angle relative to the horizontal. If the initial velocity is kept constant, at what projection angle will the object achieve its maximum horizontal range?",
+        options: [
+            "0 degrees",
+            "90 degrees",
+            "60 degrees",
+            "45 degrees"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that the range of a projectile is maximum when the projection angle is 45°, as this maximizes the sine of twice the angle."
+    },
+    {
+        question: "Q15: Consider a rocket accelerating in space. What fundamental physics principle primarily explains its propulsion mechanism?",
+        options: [
+            "Newton's First Law of Motion",
+            "Conservation of momentum",
+            "Conservation of kinetic energy",
+            "The principle of universal gravitation"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that rockets accelerate in space due to the conservation of momentum; by ejecting high-velocity gases, they experience a thrust in the opposite direction."
+    },
+    {
+        question: "Q16: A displacement-time graph displays a curved line. What can be inferred about the object's velocity?",
+        options: [
+            "It is constant and positive.",
+            "It is constant and negative.",
+            "It is zero.",
+            "It is variable."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that a curved line on a displacement-time graph indicates variable velocity because the slope, which represents velocity, is continuously changing."
+    },
+    {
+        question: "Q17: A body's velocity changes by unequal amounts in equal time intervals. What term best describes its acceleration?",
+        options: [
+            "Uniform acceleration",
+            "Zero acceleration",
+            "Instantaneous acceleration",
+            "Variable acceleration"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that variable acceleration occurs when velocity changes by unequal amounts in equal time intervals."
+    },
+    {
+        question: "Q18: What is the primary measure of an object's inertia?",
+        options: [
+            "Its volume",
+            "Its mass",
+            "Its density",
+            "Its weight"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that inertia is quantitatively measured by an object's mass; a larger mass signifies greater inertia."
+    },
+    {
+        question: "Q19: A bomb at rest explodes into several pieces. What can be concluded about the total momentum of all the pieces immediately after the explosion, assuming an isolated system?",
+        options: [
+            "The total momentum is equal to the sum of the kinetic energies.",
+            "The total momentum is always greater than zero.",
+            "The total momentum remains zero.",
+            "The total momentum depends on the number of pieces."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that for an isolated system, the total momentum during an explosion is conserved. If a bomb starts at rest (zero initial momentum), then the vector sum of the momenta of its pieces after the explosion must also be zero."
+    },
+    {
+        question: "Q20: An object moves with constant velocity. Which statement regarding its acceleration is correct?",
+        options: [
+            "Its acceleration is positive.",
+            "Its acceleration is negative.",
+            "Its acceleration is zero.",
+            "Its acceleration is variable."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that constant velocity implies zero acceleration, as acceleration is the measure of the change in velocity over time. If velocity does not change, acceleration is zero."
+    },
+    {
+        question: "Q21: The maximum height reached by a projectile is observed. How does the projectile's vertical velocity at this point compare to its initial vertical velocity?",
+        options: [
+            "It is equal to its initial vertical velocity.",
+            "It is equal to its initial horizontal velocity.",
+            "It is zero.",
+            "It is at its maximum negative value."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that at the highest point of projectile motion, the vertical velocity component (v_y) becomes zero before the object starts to descend."
+    },
+    {
+        question: "Q22: If the time of flight of a projectile is known, how does the time taken to reach its maximum height relate to its total time of flight?",
+        options: [
+            "It is equal to the total time of flight.",
+            "It is half of the total time of flight.",
+            "It is double the total time of flight.",
+            "It is unrelated to the total time of flight."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that the time to reach the summit (maximum height) for a projectile is half of the total time of flight."
+    },
+    {
+        question: "Q23: What effect does air resistance typically have on the horizontal range of a projectile compared to an idealized scenario?",
+        options: [
+            "It increases the range.",
+            "It has no effect on the range.",
+            "It reduces the range.",
+            "It only affects the maximum height, not the range."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that air resistance reduces the range and affects both horizontal and vertical components of velocity, causing the actual trajectory to deviate from ideal projectile motion."
+    },
+    {
+        question: "Q24: An object's velocity-time graph shows a straight line with a negative constant slope, while the velocity itself remains positive. What kind of motion is this object undergoing?",
+        options: [
+            "Uniform positive acceleration.",
+            "Uniform negative acceleration (deceleration).",
+            "Constant velocity.",
+            "Increasing acceleration."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that a straight line with a negative constant slope on a velocity-time graph indicates uniform negative acceleration (deceleration), provided the velocity remains positive, meaning the object is slowing down."
+    },
+    {
+        question: "Q25: In a scenario where an external net force acts on a body, how is the acceleration produced related to the body's mass?",
+        options: [
+            "Directly proportional to the mass.",
+            "Inversely proportional to the mass.",
+            "Independent of the mass.",
+            "Directly proportional to the square of the mass."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that Newton's Second Law implies acceleration is inversely proportional to mass for a given net force."
+    },
+    {
+        question: "Q26: If an object's linear momentum is observed to change over a specific time interval, what must be true about the forces acting on the object?",
+        options: [
+            "The net force acting on the object must be zero.",
+            "The object must be undergoing uniform motion.",
+            "A net force must be acting on the object.",
+            "The object must be in an elastic collision."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Newton's Second Law, in terms of momentum, indicates that the time rate of change of linear momentum of a body is equal to the force acting on the body. Therefore, a change in momentum implies a net force."
+    },
+    {
+        question: "Q27: A billiard ball strikes another and rebounds. If the collision is considered approximately elastic, what can be inferred about the system's kinetic energy and linear momentum?",
+        options: [
+            "Both kinetic energy and linear momentum are conserved.",
+            "Kinetic energy is conserved, but linear momentum is not.",
+            "Linear momentum is conserved, but kinetic energy is not.",
+            "Neither kinetic energy nor linear momentum is conserved."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that an elastic collision is one in which both kinetic energy and linear momentum are conserved. While real macroscopic collisions are only approximately elastic, the idealized definition holds that both are conserved."
+    },
+    {
+        question: "Q28: Two projectiles are launched with the same initial velocity magnitude but at different angles relative to the horizontal. If they achieve the same horizontal range, what must be true about their launch angles?",
+        options: [
+            "They must be equal.",
+            "They must differ by 45 degrees.",
+            "They must be complementary angles.",
+            "One must be 0 degrees and the other 90 degrees."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that if the initial velocity and gravity are constant, two complementary angles (angles whose sum is 90°) will have the same horizontal range."
+    },
+    {
+        question: "Q29: Consider an object moving along a path where its average velocity is zero over a certain time interval. What can be definitively concluded about its average speed over the same interval?",
+        options: [
+            "Its average speed must also be zero.",
+            "Its average speed must be greater than zero.",
+            "Its average speed could be zero or greater than zero.",
+            "Its average speed is always equal to its average velocity."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that average velocity is total displacement divided by total time. If displacement is zero (e.g., returning to start), average velocity is zero. Average speed is total distance divided by total time. If the object moved and returned, distance is non-zero, so speed is non-zero. However, if the object remained at rest, both displacement and distance would be zero, making both average velocity and average speed zero. Thus, average speed could be zero or greater than zero."
+    },
+    {
+        question: "Q30: A force acts on an object for a very short duration, causing a significant change in its momentum. This scenario is best described by which concept?",
+        options: [
+            "Uniform acceleration",
+            "Instantaneous velocity",
+            "Impulse",
+            "Kinetic energy conservation"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that impulse is defined as the product of the force and the time interval during which the force acts, and the Impulse-Momentum Theorem states that impulse is equal to the change in momentum. This perfectly describes the scenario."
+    },
+    {
+        question: "Q31: If the slope of a velocity-time graph is positive and constant, what can be inferred about the object's acceleration and velocity?",
+        options: [
+            "Its acceleration is zero, and its velocity is constant.",
+            "Its acceleration is increasing, and its velocity is constant.",
+            "Its acceleration is uniform and positive, and its velocity is increasing.",
+            "Its acceleration is uniform and negative, and its velocity is decreasing."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that on a velocity-time graph, the slope represents acceleration. A straight line with a positive constant slope indicates uniform positive acceleration. Consequently, the velocity must be increasing over time."
+    },
+    {
+        question: "Q32: A scenario involves two forces of equal magnitude acting on an object. One force attempts to move the object in one direction, while the other force attempts to move it in the opposite direction. If these forces constitute an action-reaction pair, what must be true about their application?",
+        options: [
+            "They must both be applied to the same object simultaneously.",
+            "They must be applied to different objects.",
+            "They must result in zero net acceleration for the object.",
+            "They must involve a collision between the objects."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that action-reaction forces always occur in pairs and act on *different* objects. This is a crucial distinction and prevents them from cancelling each other out on a single object."
+    },
+    {
+        question: "Q33: An object's velocity vector points north, and its acceleration vector points south. What is the object's motion doing?",
+        options: [
+            "Speeding up in the north direction.",
+            "Slowing down.",
+            "Speeding up in the south direction.",
+            "Moving at a constant velocity."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that deceleration (or retardation) occurs when an object is slowing down, which corresponds to its velocity and acceleration pointing in opposite directions. Here, velocity is north and acceleration is south, so they are opposite."
+    },
+    {
+        question: "Q34: If an object's mass is doubled while the net force acting on it is kept constant, what happens to its acceleration?",
+        options: [
+            "It doubles.",
+            "It halves.",
+            "It remains unchanged.",
+            "It quadruples."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that Newton's Second Law implies acceleration is inversely proportional to mass for a given net force. If mass doubles, acceleration halves."
+    },
+    {
+        question: "Q35: For uniformly accelerated motion, if the initial velocity is zero, and the acceleration is constant, how does the displacement relate to the time elapsed?",
+        options: [
+            "Displacement is directly proportional to time.",
+            "Displacement is inversely proportional to time.",
+            "Displacement is directly proportional to the square of time.",
+            "Displacement is independent of time."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory (referencing the underlying principles of S = v_i t + (1/2)at²) implies that if initial velocity (v_i) is zero, then displacement (S) is directly proportional to the square of time (t²) for a constant acceleration (a)."
+    },
+    {
+        question: "Q36: A system of two objects undergoes a collision. If the total linear momentum of the system is conserved but the total kinetic energy is not, what type of collision has occurred?",
+        options: [
+            "Perfectly elastic collision",
+            "Elastic collision",
+            "Inelastic collision",
+            "Non-isolated collision"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that an inelastic collision is one in which linear momentum is conserved, but kinetic energy is NOT conserved, with some kinetic energy transforming into other forms."
+    },
+    {
+        question: "Q37: In projectile motion, ignoring air resistance, which component of the projectile's velocity remains constant throughout its flight?",
+        options: [
+            "Vertical velocity",
+            "Magnitude of total velocity",
+            "Horizontal velocity",
+            "Instantaneous velocity"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that for ideal projectile motion, the horizontal acceleration (a_x) is 0 m/s², which means the horizontal velocity (v_x) remains constant throughout the flight."
+    },
+    {
+        question: "Q38: An object's position vector changes from one point to another. What does the magnitude of this change in position vector represent?",
+        options: [
+            "The total distance covered.",
+            "The object's instantaneous speed.",
+            "The shortest distance between the initial and final positions.",
+            "The average acceleration."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that displacement (Δr) is the change in position vector, and its magnitude represents the shortest distance between the initial and final positions."
+    },
+    {
+        question: "Q39: When comparing two objects, if one has significantly more mass than the other, what can be concluded about its resistance to changes in motion?",
+        options: [
+            "It will have less inertia.",
+            "It will have the same inertia.",
+            "It will have greater inertia.",
+            "Its inertia is unrelated to its mass."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that inertia is quantitatively measured by its mass, and a larger mass means greater inertia (its natural tendency to maintain its state of motion)."
+    },
+    {
+        question: "Q40: A soccer ball is kicked, and its trajectory is analyzed. If the initial projection angle is 30 degrees, what other projection angle, with the same initial speed, would result in the identical horizontal range?",
+        options: [
+            "30 degrees",
+            "45 degrees",
+            "60 degrees",
+            "90 degrees"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that two complementary angles (angles whose sum is 90°, e.g., 30° and 60°) will have the same horizontal range for a given initial velocity and gravity."
+    },
+    {
+        question: "Q41: Consider a scenario where a cannonball is fired horizontally from a very high cliff. Simultaneously, an identical cannonball is dropped vertically from the same height. Ignoring air resistance, which cannonball will hit the ground first?",
+        options: [
+            "The one fired horizontally.",
+            "The one dropped vertically.",
+            "They will hit the ground at the same time.",
+            "The outcome depends on the initial horizontal velocity."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that in projectile motion, the vertical motion is independent of the horizontal motion. Both cannonballs start with zero initial vertical velocity (relative to their release point) and experience the same constant downward acceleration due to gravity. Therefore, they will take the same time to fall the same vertical distance."
+    },
+    {
+        question: "Q42: An object is moving, and its velocity is observed to be negative at a certain instant, while its acceleration is also negative. What can be concluded about the object's speed at that instant?",
+        options: [
+            "It is increasing.",
+            "It is decreasing.",
+            "It is constant.",
+            "It is zero."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory mentions that negative acceleration is not always deceleration; it can mean speeding up in the negative direction. If both velocity and acceleration are negative, they point in the same (negative) direction, meaning the object is speeding up in that negative direction."
+    },
+    {
+        question: "Q43: If a bowling ball and a tennis ball are pushed with the same net force for the same duration, which ball will experience a greater change in velocity, assuming they start from rest?",
+        options: [
+            "The bowling ball.",
+            "The tennis ball.",
+            "They will experience the same change in velocity.",
+            "It depends on the specific material of the balls."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory, specifically Newton's Second Law and the Impulse-Momentum Theorem, states that Impulse (Force × Time) equals change in momentum (mass × change in velocity). If force and time are the same, the change in momentum is the same for both balls. Since the tennis ball has less mass, to achieve the same change in momentum, it must undergo a greater change in velocity."
+    },
+    {
+        question: "Q44: A spacecraft ejects hot gases at high velocity to change its direction. This maneuver is fundamentally explained by which principle of motion?",
+        options: [
+            "Newton's First Law of Motion, concerning inertia.",
+            "The concept of uniform acceleration.",
+            "The conservation of linear momentum in an isolated system.",
+            "The direct proportionality between force and acceleration."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that rockets accelerate due to the conservation of momentum; ejecting high-velocity gases results in a thrust in the opposite direction, ensuring the total momentum of the system (spacecraft + ejected gas) remains conserved."
+    },
+    {
+        question: "Q45: A perfectly elastic collision occurs between two objects of equal mass, where one object is initially at rest. After the collision, what can be predicted about their velocities?",
+        options: [
+            "Both objects will move together at half the initial velocity of the moving object.",
+            "The initially moving object will come to rest, and the initially stationary object will move with the initial velocity of the first object.",
+            "Both objects will move in opposite directions with reduced speeds.",
+            "The initially moving object will reverse direction, and the other will remain at rest."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory discusses conservation of momentum and kinetic energy for perfectly elastic collisions. For two objects of equal mass in a one-dimensional perfectly elastic collision where one is initially at rest, it's a known consequence of these conservation laws that the initially moving object transfers all its momentum and kinetic energy to the stationary one, coming to rest itself while the other moves off with the initial velocity."
+    },
+    {
+        question: "Q46: If an object's velocity-time graph is a horizontal line along the time axis, what does this signify about its motion?",
+        options: [
+            "It is moving with constant acceleration.",
+            "It is at rest.",
+            "It is moving with uniform velocity.",
+            "It is decelerating."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that on a velocity-time graph, a line along the time axis (v=0) indicates that the object is at rest."
+    },
+    {
+        question: "Q47: In a perfectly elastic collision, the relative speed of approach is equal to the relative speed of recession. If one object is much more massive than the other and initially at rest, and the lighter object approaches it, what happens to the lighter object's speed after the collision?",
+        options: [
+            "It remains essentially unchanged.",
+            "It doubles.",
+            "It becomes zero.",
+            "It reverses direction with almost the same speed."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that the relative speed of approach equals the relative speed of recession in a perfectly elastic collision. If a lighter object collides with a much more massive stationary object, the massive object's velocity changes negligibly. To maintain the relative speed, the lighter object must essentially reverse its direction while maintaining its speed (similar to a ball bouncing off a wall)."
+    },
+    {
+        question: "Q48: What condition must be met for the equations of uniformly accelerated motion to be valid?",
+        options: [
+            "The motion must occur in a vacuum.",
+            "The acceleration must be constant.",
+            "The initial velocity must be zero.",
+            "The object must be moving in a circular path."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory explicitly states that these equations are only applicable for motion with uniform acceleration."
+    },
+    {
+        question: "Q49: An object is thrown straight upward. At its highest point, what are the characteristics of its velocity and acceleration?",
+        options: [
+            "Velocity is zero, acceleration is zero.",
+            "Velocity is zero, acceleration is downward and non-zero.",
+            "Velocity is upward and non-zero, acceleration is downward and non-zero.",
+            "Velocity is upward and non-zero, acceleration is zero."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that for projectile motion (which includes vertical motion as a special case), at the highest point, the vertical velocity is zero. However, acceleration due to gravity (g) is always acting downward and is non-zero throughout the flight, even at the peak."
+    },
+    {
+        question: "Q50: An object is subject to a net force. If the duration over which this force acts is significantly increased while the magnitude of the force is proportionally decreased, such that their product remains constant, what can be concluded about the change in the object's momentum?",
+        options: [
+            "The change in momentum will increase.",
+            "The change in momentum will decrease.",
+            "The change in momentum will remain the same.",
+            "The change in momentum cannot be determined without knowing the mass."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that impulse is the product of the average force and the time interval, and the Impulse-Momentum Theorem states that impulse is equal to the change in momentum. If the product of force and duration (which defines impulse) remains constant, then the change in momentum must also remain the same."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Physics ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-PHY-0016';
+let quizData = quizData_WCW_PHY_0016;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-PHY-0016', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-PHY-0016', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-PHY-0016', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_PHY_0016;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_PHY_0016;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_PHY_0016[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_PHY_0016.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
